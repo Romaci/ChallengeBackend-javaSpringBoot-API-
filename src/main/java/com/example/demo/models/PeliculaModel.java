@@ -14,7 +14,9 @@ public class PeliculaModel {
 
     private String img;
     private String titulo;
-    
+        private Date fechaCreacion;
+    // private ArrayList<PersonajeModel> personajes;
+
     public String getImg() {
         return img;
     }
@@ -33,6 +35,5 @@ public class PeliculaModel {
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-    private Date fechaCreacion;
-    // private ArrayList<PersonajeModel> personajes;
+
 }
