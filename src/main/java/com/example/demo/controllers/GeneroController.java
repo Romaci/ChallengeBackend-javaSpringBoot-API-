@@ -31,6 +31,8 @@ public class GeneroController {
         return generoService.saveGenero(genero);
     }
 
+    
+
     @DeleteMapping(path = "/{id}")
     public String deleteGenero(@PathVariable("id") Long id){
         boolean ok = generoService.deleteGenero(id);
