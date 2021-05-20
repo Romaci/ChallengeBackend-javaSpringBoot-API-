@@ -41,6 +41,9 @@ public class MovieService {
         return movies;
     }
 
+    // public ArrayList<MovieModel> getMoviesInOrderAsc(){
+    //     //sin implementar
+    // }
     public  Set<MovieModel> getMoviesByGenero(Long idGenero){
        
         GeneroModel genero = generoRepository.findById(idGenero).get();

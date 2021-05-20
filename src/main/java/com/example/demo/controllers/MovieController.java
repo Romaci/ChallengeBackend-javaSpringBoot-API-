@@ -54,7 +54,7 @@ public class MovieController {
    
     // }
 
-    @PostMapping()
+    @PostMapping(path = "/movies")
     public MovieModel saveMovie(@RequestBody MovieModel movie){
         return movieService.saveMovie(movie);
     }
@@ -62,7 +62,7 @@ public class MovieController {
     
 
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/movies/{id}")
     public String deleteMovie(@PathVariable("id") Long id){
         boolean ok = movieService.deleteMovie(id);
         if (ok) {

@@ -51,7 +51,7 @@ public class CharacterController {
         return characterService.saveCharacter(character);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "characters/{id}")
     public String deleteById(@PathVariable("id") Long id) {
         boolean ok = characterService.deleteCharacter(id);
         if (ok) {
