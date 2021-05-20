@@ -35,7 +35,7 @@ public class DemoApplication {
             // MovieModel toyStory = new MovieModel(rutaS + "/toy.jpeg", "Toy Story",
             //         LocalDate.of(2020, Month.OCTOBER, 21));
 
-            // GeneroModel terror = new GeneroModel("Terror", rutaS + "/terror.jpeg");
+            GeneroModel terror = new GeneroModel("Terror", rutaS + "/terror.jpeg");
             // GeneroModel comedia = new GeneroModel("Comedia", rutaS + "/comedia.jpeg");
             // GeneroModel cF = new GeneroModel("Ciencia Ficcion", rutaS + "/cF.jpeg");
             // GeneroModel drama = new GeneroModel("Drama", rutaS + "/drama.jpeg");
@@ -53,6 +53,7 @@ public class DemoApplication {
             // characterRepository.saveAll(List.of(mickey, pluto,mickey,mini));
             movieRepository.saveAll(List.of(frozen));
             characterRepository.saveAll(List.of(mickey));
+            generoRepository.saveAll(List.of(terror));
         };
     }
 

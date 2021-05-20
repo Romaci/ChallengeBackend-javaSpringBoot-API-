@@ -15,12 +15,14 @@ public class GeneroModel {
     @Column(name = "genero_id",unique = true, nullable = false)
     private Long id;
 
+    
     private String nombre;
     private String img;
 
     @OneToMany
     private Set<MovieModel> moviesCollection = new HashSet<>();
     
+
     public GeneroModel() {
     }
     public GeneroModel(String nombre, String img) {
@@ -30,6 +32,9 @@ public class GeneroModel {
 
     public void addMovie(MovieModel movie){
         moviesCollection.add(movie);
+    }
+    public Long getId() {
+        return id;
     }
 
     public String getNombre() {
@@ -45,6 +50,11 @@ public class GeneroModel {
         this.img = img;
     }
 
-    
+    public Set<MovieModel> getMoviesCollection() {
+        return moviesCollection;
+    }
+    public void setMoviesCollection(Set<MovieModel> moviesCollection) {
+        this.moviesCollection = moviesCollection;
+    }
     
 }

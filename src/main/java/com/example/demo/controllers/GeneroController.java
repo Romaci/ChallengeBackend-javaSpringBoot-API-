@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -42,5 +44,15 @@ public class GeneroController {
         } else {
             return "No se pudo eliminar genero";
         }
+    }
+    @PutMapping(path = "/query")
+    public String addMovie(@RequestParam("id_genero") Long idCharacter, @RequestParam("id_movie") Long idMovie){
+       boolean ok = generoService.addMovie(idCharacter, idMovie);
+        if(ok){
+           return "Se cargó movie con exito";
+       }
+       else{
+           return "No se pudo cargar movie";
+       }
     }
 }

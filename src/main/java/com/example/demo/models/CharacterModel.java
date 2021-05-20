@@ -5,6 +5,10 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+
+
+
+
 @Entity
 @Table(name = "characters")
 public class CharacterModel {
@@ -19,6 +23,7 @@ public class CharacterModel {
     private Integer peso;
     private String historia;
 
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "characters_movies",
             joinColumns = {
