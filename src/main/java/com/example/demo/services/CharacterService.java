@@ -16,6 +16,7 @@ public class CharacterService {
 
     @Autowired
     CharacterRepository characterRepository;
+    @Autowired
     MovieRepository movieRepository;
 
     public ArrayList<CharacterModel> getCharacters(){

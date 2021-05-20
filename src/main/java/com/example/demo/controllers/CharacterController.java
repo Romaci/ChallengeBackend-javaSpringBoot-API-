@@ -48,7 +48,8 @@ public class CharacterController {
 
     @PutMapping(path = "/query")
     public String addMovie(@RequestParam("id_character") Long idCharacter, @RequestParam("id_movie") Long idMovie){
-       if(characterService.addMovie(idCharacter, idMovie)){
+       boolean ok = characterService.addMovie(idCharacter, idMovie);
+        if(ok){
            return "Se cargó movie con exito";
        }
        else{

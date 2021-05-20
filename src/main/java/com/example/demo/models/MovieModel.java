@@ -17,6 +17,13 @@ public class MovieModel {
     @Column(name = "movie_id",unique = true, nullable = false)
     private Long id;
 
+
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private String img;
     private String titulo;
     private LocalDate fechaCreacion;
@@ -35,7 +42,9 @@ public class MovieModel {
         this.fechaCreacion = fC;
         
     }
-
+    public Long getId() {
+        return id;
+    }
     public void addCharacter(CharacterModel character){
         this.charactersCollection.add(character);
     }
@@ -73,5 +82,6 @@ public class MovieModel {
     public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
+    
 
 }

@@ -1,6 +1,5 @@
 package com.example.demo.repositories;
 
-import com.example.demo.models.CharacterModel;
 import com.example.demo.models.MovieModel;
 
 import org.springframework.data.repository.CrudRepository;

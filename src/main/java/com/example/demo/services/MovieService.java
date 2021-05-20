@@ -19,6 +19,11 @@ public class MovieService {
     public ArrayList<MovieModel> getMovies(){
         return (ArrayList<MovieModel>)movieRepository.findAll();
     }
+    public MovieModel getMovie(Long id){
+        return movieRepository.findById(id).get();
+    }
+
+    
     
     public MovieModel saveMovie(MovieModel movie){
         return movieRepository.save(movie);

@@ -25,6 +25,7 @@ public class GeneroController {
     public ArrayList<GeneroModel> getGeneros(){
         return generoService.getGeneros();
     }
+    
 
     @PostMapping()
     public GeneroModel saveGenero(@RequestBody GeneroModel genero){
