@@ -3,17 +3,18 @@ package com.example.demo.models;
 
 import java.time.LocalDate;
 
-// import java.util.HashSet;
-// import java.util.Set;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pelicula")
-public class PeliculaModel {
+@Table(name = "movies")
+public class MovieModel {
+   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pelicula_id",unique = true, nullable = false)
+    @Column(name = "movie_id",unique = true, nullable = false)
     private Long id;
 
     private String img;
@@ -21,26 +22,33 @@ public class PeliculaModel {
     private LocalDate fechaCreacion;
     
 
-    // @OneToMany
-    // private Set<PersonajeModel> personajes = new HashSet<>(); 
+    @ManyToMany(mappedBy = "moviesCollection", fetch = FetchType.LAZY)
+    private Set<CharacterModel> charactersCollection = new HashSet<>(); 
 
-    public PeliculaModel() {
+    public MovieModel() {
     }
 
-    public PeliculaModel(String img, String titulo, LocalDate fechaCreacion) {
+
+    public MovieModel(String img, String titulo, LocalDate fC) {
         this.img = img;
         this.titulo = titulo;
-        this.fechaCreacion = fechaCreacion;
+        this.fechaCreacion = fC;
+        
     }
 
-    // public Set<PersonajeModel> getPersonajes() {
-    //     return personajes;
-    // }
+    public void addCharacter(CharacterModel character){
+        this.charactersCollection.add(character);
+    }
 
 
-    // public void setPersonajes(Set<PersonajeModel> personajes) {
-    //     this.personajes = personajes;
-    // }
+    public Set<CharacterModel> getCharacters() {
+        return charactersCollection;
+    }
+
+
+    public void setCharacters(Set<CharacterModel> characters) {
+        this.charactersCollection = characters;
+    }
 
     public String getImg() {
         return img;

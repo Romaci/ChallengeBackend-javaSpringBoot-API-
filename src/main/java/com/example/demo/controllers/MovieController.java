@@ -2,8 +2,8 @@ package com.example.demo.controllers;
 
 import java.util.ArrayList;
 
-import com.example.demo.models.PeliculaModel;
-import com.example.demo.services.PeliculaService;
+import com.example.demo.models.MovieModel;
+import com.example.demo.services.MovieService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,32 +16,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/movies")
-public class PeliculaController {
+@RequestMapping(path ="movies")
+public class MovieController {
     
     @Autowired
-    PeliculaService peliculaService;
+    MovieService movieService;
 
     @GetMapping()
-    public ArrayList<PeliculaModel> getPeliculas(){
-       return peliculaService.getPeliculas();
+    public ArrayList<MovieModel> getMovies(){
+       return movieService.getMovies();
     }
 
     @PostMapping()
-    public PeliculaModel savePelicula(@RequestBody PeliculaModel pelicula){
-        return peliculaService.savePelicula(pelicula);
+    public MovieModel saveMovie(@RequestBody MovieModel movie){
+        return movieService.saveMovie(movie);
     }
 
     
 
 
     @DeleteMapping(path = "/{id}")
-    public String deletePelicula(@PathVariable("id") Long id){
-        boolean ok = peliculaService.deletePelicula(id);
+    public String deleteMovie(@PathVariable("id") Long id){
+        boolean ok = movieService.deleteMovie(id);
         if (ok) {
-            return "Se elimino pelicula";
+            return "Se elimino movie";
         } else {
-            return "No se pudo eliminar pelicula";
+            return "No se pudo eliminar movie";
         }
         
     }

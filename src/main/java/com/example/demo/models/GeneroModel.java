@@ -2,37 +2,36 @@ package com.example.demo.models;
 
 
 
-// import java.util.HashSet;
-// import java.util.Set;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "genero")
+@Table(name = "generos")
 public class GeneroModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
+    @Column(name = "genero_id",unique = true, nullable = false)
     private Long id;
 
     private String nombre;
     private String img;
 
-    // @OneToMany()
-    // private Set<PeliculaModel> peliculas = new HashSet<>();
+    @OneToMany
+    private Set<MovieModel> moviesCollection = new HashSet<>();
     
     public GeneroModel() {
     }
-    // public Set<PeliculaModel> getPeliculas() {
-    //     return peliculas;
-    // }
-    // public void setPeliculas(Set<PeliculaModel> peliculas) {
-    //     this.peliculas = peliculas;
-    // }
     public GeneroModel(String nombre, String img) {
         this.nombre = nombre;
         this.img = img;
     }
+
+    public void addMovie(MovieModel movie){
+        moviesCollection.add(movie);
+    }
+
     public String getNombre() {
         return nombre;
     }

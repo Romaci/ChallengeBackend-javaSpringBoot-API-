@@ -1,11 +1,12 @@
 package com.example.demo.repositories;
 
-import com.example.demo.models.PersonajeModel;
+
+import com.example.demo.models.CharacterModel;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonajeRepository extends CrudRepository<PersonajeModel, Long>{
+public interface CharacterRepository extends CrudRepository<CharacterModel, Long>{
     
 }

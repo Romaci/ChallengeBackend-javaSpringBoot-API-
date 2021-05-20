@@ -1,40 +1,47 @@
 package com.example.demo.models;
 
-// import java.util.HashSet;
-// import java.util.Set;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "personaje")
-public class PersonajeModel {
+@Table(name = "characters")
+public class CharacterModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
+    @Column(name = "character_id",unique = true, nullable = false)
     private Long id;
     private String img;
     private String nombre;
     private Integer edad;
-    private Float peso;
+    private Integer peso;
     private String historia;
 
-    // @OneToMany(mappedBy = "personajes")
-    // private Set<PeliculaModel> peliculas = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "characters_movies",
+            joinColumns = {
+                    @JoinColumn(name = "character_id", referencedColumnName = "character_id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "movie_id", referencedColumnName = "movie_id")})
+    private Set<MovieModel> moviesCollection = new HashSet<>();
 
-    
-
-    public PersonajeModel() {
+    public CharacterModel() {
     }
 
-    public PersonajeModel(String nombre, Integer edad, Float peso, String historia, String img) {
+    public CharacterModel(String img, String nombre, int edad, int peso, String historia) {
+        this.img = img;
         this.nombre = nombre;
         this.edad = edad;
         this.peso = peso;
         this.historia = historia;
-        this.img = img;
     }
 
+
+    public void addMovie(MovieModel movie){
+        moviesCollection.add(movie);
+    }
     public String getImg() {
         return img;
     }
@@ -67,11 +74,11 @@ public class PersonajeModel {
         this.edad = edad;
     }
 
-    public Float getPeso() {
+    public Integer getPeso() {
         return peso;
     }
 
-    public void setPeso(Float peso) {
+    public void setPeso(Integer peso) {
         this.peso = peso;
     }
 
@@ -83,12 +90,12 @@ public class PersonajeModel {
         this.historia = historia;
     }
 
-    // public Set<PeliculaModel> getPeliculas() {
-    //     return peliculas;
-    // }
+    public Set<MovieModel> getMovies() {
+        return moviesCollection;
+    }
 
-    // public void setPeliculas(Set<PeliculaModel> peliculas) {
-    //     this.peliculas = peliculas;
-    // }
+    public void setMovies(Set<MovieModel> movies) {
+        this.moviesCollection = movies;
+    }
 
 }
