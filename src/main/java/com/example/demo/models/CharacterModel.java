@@ -18,6 +18,8 @@ public class CharacterModel {
     @Column(name = "character_id",unique = true, nullable = false)
     private Long id;
     private String img;
+
+    @Column(name = "nombre",unique = true, nullable = false)
     private String nombre;
     private Integer edad;
     private Integer peso;

@@ -1,10 +1,10 @@
 package com.example.demo.controllers;
 
 import java.util.ArrayList;
-import java.util.Optional;
+
 
 import com.example.demo.services.CharacterService;
-import com.example.demo.services.MovieService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,17 +18,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.CharacterModel;
-import com.example.demo.models.MovieModel;
+
 
 @RestController
-@RequestMapping(path = "characters")
+@RequestMapping()
 public class CharacterController {
     @Autowired
     CharacterService characterService;
-    MovieService movieService;
-    @GetMapping()
+
+
+    @GetMapping(path = "/characters")
     public ArrayList<CharacterModel> getCharacter() {
         return characterService.getCharacters();
+    }
+
+    @PostMapping(path = { "/characterByName/characters{name}" }) 
+    public ArrayList<CharacterModel> getCharacterByName(@RequestParam ("name") String nombre){
+        return characterService.getCharacterByName(nombre);
+    }
+    @PostMapping(path ="characterByAge/characters{age}")
+    public ArrayList<CharacterModel> getCharacterByAge(@RequestParam("age")Integer age){
+        return characterService.getCharacterByAge(age);
+    }
+
+    @PostMapping(path ="characterInMovie/characters{movies}")
+    public ArrayList<CharacterModel> getCharacterInMovie(@RequestParam("movies")Long idMovie){
+        return characterService.getCharactersInMovie(idMovie);
     }
 
     @PostMapping()
